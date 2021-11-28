@@ -20,13 +20,12 @@ import javax.swing.event.ListSelectionListener;
  * @author CORECOMP
  */
 public class EBilling extends JFrame implements ActionListener ,ListSelectionListener{
-    ImageIcon logo = new ImageIcon(ClassLoader.getSystemResource("icon/muktai logo.jpg"));
     JFrame j;
     JLabel Name,id;
     JList List1;
     JTextField nameBox,idBox,addressBox;
     String Text;
-    JButton search,nc,go;
+    JButton search,nc,go,fr;
     JScrollPane jsp;
     ResultSet s1;
     final DefaultListModel<String> l1 = new DefaultListModel<>();
@@ -36,7 +35,7 @@ public class EBilling extends JFrame implements ActionListener ,ListSelectionLis
         j = new JFrame("Search");
         j.setLayout(null);
         j.setLocation(400,100);
-        j.setIconImage(logo.getImage());
+        
         j.getContentPane().setBackground(Color.WHITE);
         
         Name = new JLabel("Name");
@@ -58,18 +57,25 @@ public class EBilling extends JFrame implements ActionListener ,ListSelectionLis
         j.add(idBox);
         
         search = new JButton("Search");
-        search.setBounds(250,100,100,30);
+        search.setBounds(200,100,100,30);
         search.addActionListener(this);
         search.setBackground(Color.BLACK);
         search.setForeground(Color.WHITE);
         j.add(search);
         
         nc = new JButton("Add Cust");
-        nc.setBounds(400,100,100,30);
+        nc.setBounds(350,100,100,30);
         nc.addActionListener(this);
         nc.setBackground(Color.BLUE);
         nc.setForeground(Color.WHITE);
         j.add(nc);
+        
+        fr = new JButton("Records");
+        fr.setBounds(500,100,100,30);
+        fr.addActionListener(this);
+        fr.setBackground(Color.BLUE);
+        fr.setForeground(Color.WHITE);
+        j.add(fr);
         
         
   
@@ -157,11 +163,12 @@ public class EBilling extends JFrame implements ActionListener ,ListSelectionLis
             new NewCustomer().setVisible(true);
     
 }
-        else {
-             
-       
-        }
+        else if(e.getSource()== fr){
+            this.setVisible(false);
+            Records r = new Records();
+    
 }
+    }
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
@@ -177,7 +184,8 @@ public class EBilling extends JFrame implements ActionListener ,ListSelectionLis
                     
                     int id = s1.getInt("id");
                     
-                    new ViewInformation(id).setVisible(true);
+                    ViewInformation v = new ViewInformation(id);
+                    v.setVisible(true);
                
                 
             }

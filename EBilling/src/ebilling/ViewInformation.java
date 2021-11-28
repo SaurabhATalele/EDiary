@@ -13,6 +13,7 @@ import java.awt.event.*;
 public class ViewInformation extends JFrame implements ActionListener{
     JButton b1,payments,update;
     int meter=0;
+    
     ImageIcon logo = new ImageIcon(ClassLoader.getSystemResource("icon/muktai logo.jpg"));
     ViewInformation(int meter){
         this.meter=meter;
@@ -27,7 +28,7 @@ public class ViewInformation extends JFrame implements ActionListener{
         add(title);
         
         JLabel l1 = new JLabel("Name");
-        l1.setBounds(70, 80, 100, 20);
+        l1.setBounds(70, 80, 200, 20);
         add(l1);
         
         JLabel l11 = new JLabel();
@@ -58,13 +59,7 @@ public class ViewInformation extends JFrame implements ActionListener{
         l14.setBounds(250, 260, 100, 20);
         add(l14);
         
-        JLabel l5 = new JLabel("City");
-        l5.setBounds(500, 80, 100, 20);
-        add(l5);
         
-        JLabel l15 = new JLabel();
-        l15.setBounds(650, 80, 100, 20);
-        add(l15);
         
         
         
@@ -76,7 +71,7 @@ public class ViewInformation extends JFrame implements ActionListener{
                 l12.setText(rs.getString(1));
                 l13.setText(rs.getString(3));
                 l14.setText(rs.getString(4));
-                l15.setText(rs.getString(5));
+                
                
                 
             }
@@ -109,13 +104,15 @@ public class ViewInformation extends JFrame implements ActionListener{
         JLabel l8  = new JLabel(i3);
         l8.setBounds(20, 350, 600, 300);
         add(l8);
+        
+        setVisible(true);
     }
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()==b1){
         this.setVisible(false);}
         else  if(ae.getSource()==payments){
-            new Payments(meter);
+            new Payments(meter).setVisible(true);
         }
         else if(ae.getSource()==update){
         this.setVisible(false);
@@ -123,7 +120,5 @@ public class ViewInformation extends JFrame implements ActionListener{
         }
     }
     
-    public static void main(String[] args){
-        new ViewInformation(0).setVisible(true);
-    }
+   
 }
