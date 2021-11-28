@@ -23,6 +23,6 @@ CREATE TABLE `payments` (
   `amount` int DEFAULT NULL,
   `balance` int DEFAULT NULL,
   `dt` date DEFAULT NULL,
-  KEY `id` (`id`),
-  CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`id`) REFERENCES `customers` (`ID`)
+ tid int default 1,
+  CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`id`) REFERENCES `customers` (`ID`));
 
